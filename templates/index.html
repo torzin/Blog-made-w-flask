@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "header.html" %}
+    
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div id="user">
+        <h1 class="title">All Posts</h1>
+        {% if current_user.is_active %}
+        <div>
+            <p class="user-text">Logged in as: <span id="user name">{{ current_user.name }}</span></p>
+            <a href="{{url_for('logout')}}"><button class="btn">Logout</button></a>
+        </div>
+        {% else %}
+        <p class="user-text">Not Logged</p>
+        {% endif %}
+    </div>
+    
+    <div id="posts">
+        {% for post in all_posts %}
+        <a href="{{url_for('see_post', post_id=post.id)}}">
+            <div class="post-card">
+                <h1 class="post-card-title">{{post.title}}</h1>
+                <p class="post-desc">{{post.description}}</p>
+                {% if post.author_id == current_user.id %}
+                <a href="{{url_for('delete_post', post_id=post.id)}}"><button class="btn">Delete Post</button></a>
+                {% endif %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

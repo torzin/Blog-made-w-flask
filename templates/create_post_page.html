@@ -1,0 +1,14 @@
+{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "header.html" %}
+</head>
+<body>
+    {% include "navbar.html" %}
+    <h1 class="title">Create your post</h1>
+    {{ wtf.quick_form(form, novalidate=True)}}
+    {{ ckeditor.load() }}
+    {% include 'footer.html' %}
+</body>
+</html>

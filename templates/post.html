@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "header.html" %}
+    <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div id="post">
+        <h1 id="post-title">{{post.title}}</h1>
+        <p id="post-author">Post author: {{user_author}}</p>
+        <div id="post-content">
+            {{post.content|safe }}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
