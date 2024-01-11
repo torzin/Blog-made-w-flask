@@ -8,8 +8,8 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 from flask_ckeditor import CKEditor
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
-app.config['SECRET_KEY'] = "134hj02347891yg2-3h4798"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///DATABASENAME.db"
+app.config['SECRET_KEY'] = "YOUR SECRET KEY"
 Bootstrap(app)
 ckeditor = CKEditor(app)
 
@@ -94,7 +94,7 @@ def register():
     if request.method == "POST":
         password_hash = generate_password_hash(
             request.form.get('password'),
-            method="pbkdf2:sha256",
+            method="YOUR METHOD HERE",
             salt_length=16
         )
         new_user = Author(
